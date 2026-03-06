@@ -977,74 +977,106 @@
           <div class="inner">
             <div class="ki anim">Day-1 Operational Stack</div>
             <h2 class="anim">
-              What you need running before the first email goes out
+              What&rsquo;s already running &mdash; and what to add
             </h2>
+            <p class="sub anim" style="margin-bottom: 12px">
+              Most of the infrastructure is already live. This campaign layers
+              on top of existing tooling, not a greenfield build.
+            </p>
             <div class="g g3 anim">
-              <div class="c" style="border-top: 3px solid var(--ac)">
-                <h3 style="color: var(--ac)">Email infrastructure</h3>
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">
+                  Already live
+                  <span
+                    style="font-size: 10px; color: var(--mut); font-weight: 400"
+                    >(no setup needed)</span
+                  >
+                </h3>
                 <ul>
                   <li>
-                    <strong style="color: var(--tx)">Domain:</strong> Set up
-                    outreach@boltline.com with SPF, DKIM, DMARC configured
+                    <strong style="color: var(--tx)">HubSpot CRM:</strong>
+                    Already integrated via Leadin plugin. Add custom properties:
+                    tier, score, trigger, objection, next action. AI-assisted
+                    lead scoring on ingest.
                   </li>
                   <li>
-                    <strong style="color: var(--tx)">Warm-up:</strong> 2&ndash;3
-                    weeks of domain warming before volume sends (use Instantly
-                    or Lemlist warm-up)
+                    <strong style="color: var(--tx)">Reb2b intent data:</strong>
+                    Already tracking B2B visitors. Use to detect when target
+                    accounts hit boltline.com &mdash; instant Tier A promotion
+                    trigger.
                   </li>
                   <li>
-                    <strong style="color: var(--tx)">Alternative:</strong>
-                    Marketing&rsquo;s personal Gmail for Tier A (5/day max,
-                    bypasses warming). Use platform for Tier B
+                    <strong style="color: var(--tx)">Datadog RUM:</strong>
+                    Already monitoring at 20% sample rate. Track LP1/LP2
+                    engagement, time-on-page, and scroll depth for campaign
+                    pages.
                   </li>
                   <li>
-                    <strong style="color: var(--tx)">Tracking:</strong> Pixel
-                    tracking OFF for Tier A &mdash; technical founders
-                    block/notice it. Track replies only.
-                  </li>
-                </ul>
-                <p style="font-size: 12px; color: var(--mut); margin-top: 6px">
-                  Week -2 to 0 task. Cannot skip this.
-                </p>
-              </div>
-              <div class="c" style="border-top: 3px solid var(--ac)">
-                <h3 style="color: var(--ac)">CRM + data</h3>
-                <ul>
-                  <li>
-                    <strong style="color: var(--tx)">CRM:</strong> HubSpot
-                    &mdash; company, contact, tier, score, trigger, status, last
-                    touch, next action, objection as custom properties.
-                    AI-assisted lead scoring and enrichment.
+                    <strong style="color: var(--tx)">Google Ads:</strong>
+                    Conversion tracking live (AW-11150013242). Use for
+                    retargeting LP1 visitors who don&rsquo;t book.
                   </li>
                   <li>
-                    <strong style="color: var(--tx)">Account list:</strong>
-                    HubSpot import &mdash; sourced from LinkedIn SN, enriched
-                    from Crunchbase, AI-scored on ingest
-                  </li>
-                  <li>
-                    <strong style="color: var(--tx)">Objection log:</strong>
-                    HubSpot custom object. Verbatim quotes from every reply.
-                    AI-tagged by theme. Reviewed weekly.
-                  </li>
-                  <li>
-                    <strong style="color: var(--tx)">Rule:</strong> No email
-                    goes out unless the account is in HubSpot with a score and a
-                    documented trigger.
+                    <strong style="color: var(--tx)"
+                      >WordPress + Cloudflare:</strong
+                    >
+                    LP1 and LP2 ship as WordPress pages behind existing CDN. No
+                    new infra needed.
                   </li>
                 </ul>
               </div>
+              <div class="c" style="border-top: 3px solid var(--am)">
+                <h3 style="color: var(--am)">
+                  Configure
+                  <span
+                    style="font-size: 10px; color: var(--mut); font-weight: 400"
+                    >(Week -2 to 0)</span
+                  >
+                </h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Email domain:</strong> Set
+                    up outreach@boltline.com with SPF, DKIM, DMARC. 2&ndash;3
+                    weeks warm-up via Instantly or Lemlist before volume sends.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">HubSpot sequences:</strong>
+                    Build 21-day outreach cadence as HubSpot sequence. Auto-log
+                    touches, replies, and status changes.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Reb2b &rarr; HubSpot:</strong
+                    >
+                    Connect Reb2b to HubSpot workflows. When a Tier A/B account
+                    visits boltline.com, auto-create task for Marketing.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Tracking rules:</strong>
+                    Pixel tracking OFF for Tier A emails &mdash; technical
+                    founders block/notice it. Track replies only. Use Reb2b for
+                    site-side intent.
+                  </li>
+                </ul>
+              </div>
               <div class="c" style="border-top: 3px solid var(--ac)">
-                <h3 style="color: var(--ac)">Monitoring alerts</h3>
+                <h3 style="color: var(--ac)">
+                  Add
+                  <span
+                    style="font-size: 10px; color: var(--mut); font-weight: 400"
+                    >(new tools)</span
+                  >
+                </h3>
                 <ul>
                   <li>
                     <strong style="color: var(--tx)">LinkedIn SN:</strong>
                     $100/mo. Saved search for SpaceX alumni + title + company
-                    size filters. Weekly digest.
+                    size filters. Weekly digest into HubSpot.
                   </li>
                   <li>
                     <strong style="color: var(--tx)">Crunchbase Pro:</strong>
-                    $49/mo. Follow all Tier A accounts. Funding = instant Tier A
-                    promotion.
+                    $49/mo. Follow all Tier A accounts. Funding round = instant
+                    trigger alert.
                   </li>
                   <li>
                     <strong style="color: var(--tx)">Google Alerts:</strong>
@@ -1057,15 +1089,15 @@
                   </li>
                 </ul>
                 <p style="font-size: 12px; color: var(--mut); margin-top: 6px">
-                  Total tool cost: $149/mo. Setup time: 4 hours.
+                  New tool cost: $149/mo. Config time: ~4 hours.
                 </p>
               </div>
             </div>
             <div class="co anim">
-              <strong>Non-negotiable:</strong> Email infrastructure + CRM must
-              be running before Week 4 outreach. If domain warming starts Week
-              1, you&rsquo;re ready by Week 3. If it starts Week 3, outreach
-              slips to Week 6.
+              <strong>Key insight:</strong> The hard infrastructure is already
+              in place. This campaign is a configuration exercise &mdash; custom
+              properties in HubSpot, a Reb2b workflow, an email warm-up, and two
+              WordPress landing pages. No new platforms to procure or integrate.
             </div>
           </div>
         </article>
