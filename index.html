@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Boltline | SpaceX Alumni Acquisition Strategy</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
+
+      :root {
+        --bg: #080c16;
+        --sf: rgba(255, 255, 255, 0.03);
+        --sf2: rgba(255, 255, 255, 0.06);
+        --bd: rgba(255, 255, 255, 0.08);
+        --bd2: rgba(255, 255, 255, 0.12);
+        --tx: #eef2f7;
+        --dim: #b0bece;
+        --mut: #8494a7;
+        --ac: #38bdf8;
+        --acg: rgba(56, 189, 248, 0.1);
+        --ac2: rgba(56, 189, 248, 0.25);
+        --pu: #8b5cf6;
+        --pug: rgba(139, 92, 246, 0.1);
+        --gn: #34d399;
+        --gng: rgba(52, 211, 153, 0.08);
+        --am: #fbbf24;
+        --amg: rgba(251, 191, 36, 0.08);
+        --rd: #f87171;
+        --rdg: rgba(248, 113, 113, 0.08);
+        --r: 12px;
+        --r2: 8px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--tx);
+        overflow: hidden;
+        height: 100dvh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 50% 0%,
+            rgba(56, 189, 248, 0.04) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 50% at 80% 100%,
+            rgba(139, 92, 246, 0.03) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        opacity: 0.35;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .deck {
+        height: 100dvh;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        position: relative;
+        z-index: 1;
+      }
+      .sc {
+        position: relative;
+        overflow: hidden;
+      }
+      .s {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 64px;
+        opacity: 0;
+        transform: translateX(24px);
+        transition:
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        overflow-y: auto;
+      }
+      .s.on {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .s.out {
+        opacity: 0;
+        transform: translateX(-24px);
+      }
+      .s .inner {
+        max-width: 1080px;
+        width: 100%;
+        margin: 0 auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 0;
+      }
+      .s.on .anim {
+        animation: fadeUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .s.on .anim:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .s.on .anim:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .s.on .anim:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .s.on .anim:nth-child(4) {
+        animation-delay: 0.28s;
+      }
+      .s.on .anim:nth-child(5) {
+        animation-delay: 0.35s;
+      }
+      .s.on .anim:nth-child(6) {
+        animation-delay: 0.42s;
+      }
+
+      .ki {
+        font-family: "Sora", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ac);
+        margin-bottom: 14px;
+        opacity: 0.85;
+      }
+      h1 {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(30px, 4vw, 48px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, var(--tx) 0%, var(--dim) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      h2 {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(21px, 2.6vw, 32px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 8px;
+      }
+      h3 {
+        font-family: "Sora", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+      .sub {
+        font-size: 15px;
+        color: var(--dim);
+        margin-top: 10px;
+        max-width: 620px;
+        line-height: 1.55;
+        font-weight: 400;
+      }
+      p {
+        color: var(--dim);
+        line-height: 1.55;
+        font-size: 14px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        position: relative;
+        padding-left: 16px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: var(--dim);
+        line-height: 1.5;
+      }
+      li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--ac);
+        opacity: 0.6;
+      }
+
+      .g {
+        display: grid;
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .g2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .g3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .c {
+        background: var(--sf);
+        border: 1px solid var(--bd);
+        border-radius: var(--r);
+        padding: 18px;
+        backdrop-filter: blur(8px);
+        transition: border-color 0.25s;
+      }
+      .c:hover {
+        border-color: var(--bd2);
+      }
+      .co {
+        margin-top: 18px;
+        padding: 12px 16px;
+        border-radius: var(--r);
+        background: var(--acg);
+        border: 1px solid var(--ac2);
+        font-size: 13.5px;
+        font-weight: 500;
+        color: var(--ac);
+        line-height: 1.5;
+      }
+      .co.pu {
+        background: var(--pug);
+        border-color: rgba(139, 92, 246, 0.25);
+        color: #c4b5fd;
+      }
+      .co.gn {
+        background: var(--gng);
+        border-color: rgba(52, 211, 153, 0.25);
+        color: var(--gn);
+      }
+      .co.am {
+        background: var(--amg);
+        border-color: rgba(251, 191, 36, 0.25);
+        color: var(--am);
+      }
+      .co.rd {
+        background: var(--rdg);
+        border-color: rgba(248, 113, 113, 0.25);
+        color: var(--rd);
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 24px;
+      }
+      .st {
+        background: var(--sf);
+        border: 1px solid var(--bd);
+        border-radius: var(--r);
+        padding: 16px 18px;
+      }
+      .sv {
+        font-family: "Sora", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .sl {
+        font-size: 11.5px;
+        color: var(--mut);
+        margin-top: 6px;
+        line-height: 1.35;
+      }
+
+      .kpi-table {
+        display: grid;
+        gap: 0;
+        margin-top: 14px;
+      }
+      .kpi-row {
+        display: grid;
+        border: 1px solid var(--bd);
+        border-bottom: none;
+        background: var(--sf);
+      }
+      .kpi-row:last-child {
+        border-bottom: 1px solid var(--bd);
+        border-radius: 0 0 var(--r) var(--r);
+      }
+      .kpi-row.kpi-head {
+        background: var(--sf2);
+        border-radius: var(--r) var(--r) 0 0;
+      }
+      .kpi-row.kpi-head div {
+        font-family: "Sora", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mut);
+      }
+      .kpi-row div {
+        padding: 9px 14px;
+        font-size: 13.5px;
+        color: var(--dim);
+        border-right: 1px solid var(--bd);
+      }
+      .kpi-row div:last-child {
+        border-right: none;
+      }
+      .kpi-metric {
+        font-weight: 500;
+        color: var(--tx) !important;
+      }
+
+      .tl {
+        display: grid;
+        gap: 0;
+        margin-top: 16px;
+      }
+      .ph {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        border: 1px solid var(--bd);
+        border-bottom: none;
+      }
+      .ph:first-child {
+        border-radius: var(--r) var(--r) 0 0;
+      }
+      .ph:last-child {
+        border-bottom: 1px solid var(--bd);
+        border-radius: 0 0 var(--r) var(--r);
+      }
+      .ph-l {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--sf);
+        border-right: 1px solid var(--bd);
+        padding: 10px;
+      }
+      .ph-d {
+        font-family: "Sora", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+      }
+      .ph-s {
+        font-family: "Sora", sans-serif;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--mut);
+      }
+      .ph-c {
+        padding: 12px 18px;
+        background: var(--sf2);
+      }
+      .ph-t {
+        font-family: "Sora", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+      .ph-desc {
+        font-size: 12px;
+        color: var(--mut);
+        line-height: 1.45;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 6px;
+      }
+      .tag {
+        font-family: "DM Sans", sans-serif;
+        font-size: 10px;
+        padding: 3px 9px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+      .tag.bl {
+        background: rgba(56, 189, 248, 0.08);
+        color: var(--ac);
+        border: 1px solid rgba(56, 189, 248, 0.18);
+      }
+      .tag.pr {
+        background: rgba(139, 92, 246, 0.08);
+        color: #a78bfa;
+        border: 1px solid rgba(139, 92, 246, 0.18);
+      }
+      .tag.gr {
+        background: rgba(52, 211, 153, 0.08);
+        color: var(--gn);
+        border: 1px solid rgba(52, 211, 153, 0.18);
+      }
+      .tag.am {
+        background: rgba(251, 191, 36, 0.08);
+        color: var(--am);
+        border: 1px solid rgba(251, 191, 36, 0.18);
+      }
+      .tag.rd {
+        background: rgba(248, 113, 113, 0.08);
+        color: var(--rd);
+        border: 1px solid rgba(248, 113, 113, 0.18);
+      }
+
+      .quote {
+        border-left: 3px solid var(--ac);
+        padding: 8px 14px;
+        margin: 8px 0;
+        background: rgba(56, 189, 248, 0.04);
+        border-radius: 0 var(--r2) var(--r2) 0;
+        font-style: italic;
+        font-size: 13px;
+        color: var(--dim);
+        line-height: 1.5;
+      }
+      .quote.gq {
+        border-color: var(--gn);
+        background: rgba(52, 211, 153, 0.04);
+      }
+
+      .nb {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 24px;
+        background: rgba(8, 12, 22, 0.9);
+        border-top: 1px solid var(--bd);
+        backdrop-filter: blur(12px);
+      }
+      .nl {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nc {
+        font-family: "Sora", sans-serif;
+        font-size: 11px;
+        color: var(--mut);
+        font-weight: 500;
+        min-width: 58px;
+      }
+      .nt {
+        font-size: 11px;
+        color: var(--mut);
+        font-weight: 400;
+      }
+      .nd {
+        display: flex;
+        gap: 6px;
+      }
+      .dt {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .dt.on {
+        background: var(--ac);
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.45);
+      }
+      .btns {
+        display: flex;
+        gap: 8px;
+      }
+      .btn {
+        background: transparent;
+        border: 1px solid var(--bd);
+        color: var(--dim);
+        border-radius: 6px;
+        padding: 6px 14px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn:hover {
+        border-color: var(--ac);
+        color: var(--tx);
+        background: var(--acg);
+      }
+
+      @media (max-width: 900px) {
+        .s {
+          padding: 0 28px;
+        }
+        .g2,
+        .g3 {
+          grid-template-columns: 1fr;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .kpi-row {
+          font-size: 12px;
+        }
+        .ph {
+          grid-template-columns: 60px 1fr;
+        }
+        h1 {
+          font-size: 28px;
+        }
+        h2 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="sc">
+        <!-- ═══ S1: TITLE ═══ -->
+        <article class="s on">
+          <div class="inner">
+            <div class="ki anim">SpaceX Alumni Acquisition Strategy</div>
+            <h1 class="anim">
+              Land the First 2 SpaceX Alumni Pilots in 90 Days
+            </h1>
+            <p class="sub anim">
+              Boltline was built inside Stoke Space when off-the-shelf
+              PLM/MES/ERP broke under daily hardware iteration. 46+ SpaceX
+              alumni have founded hard-tech companies raising $1B+ collectively.
+              They hit the same wall. Most are still running spreadsheets + Jira
+              + tribal knowledge.
+            </p>
+            <div class="stats anim">
+              <div class="st">
+                <div class="sv">46+</div>
+                <div class="sl">
+                  Verified SpaceX alumni&ndash;founded<br />companies
+                  (Crunchbase)
+                </div>
+              </div>
+              <div class="st">
+                <div class="sv">$1B+</div>
+                <div class="sl">
+                  Raised collectively &mdash;<br />tooling budget exists
+                </div>
+              </div>
+              <div class="st">
+                <div class="sv">2 hrs</div>
+                <div class="sl">
+                  Traced 4 bad washers inside<br />an engine, hot fire same day
+                </div>
+              </div>
+              <div class="st">
+                <div class="sv">0</div>
+                <div class="sl">
+                  SpaceX alumni customers<br />today &mdash; cold start problem
+                </div>
+              </div>
+            </div>
+            <div class="co anim">
+              <strong>90-day outcome:</strong> 1&ndash;2 signed pilots from
+              SpaceX alumni accounts, proving a repeatable segment motion.
+              Conservative math, not aspirational targets. The first customer
+              unlocks the referral flywheel.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S2: PROOF STORIES ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Proof That Closes Deals</div>
+            <h2 class="anim">
+              Two stories from Stoke Space. Both real. Both verifiable.
+            </h2>
+            <div class="g g2 anim">
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">The Washer Incident</h3>
+                <p>
+                  <strong style="color: var(--tx)">Problem:</strong> 10,000
+                  out-of-spec washers discovered in supply chain.
+                </p>
+                <p>
+                  <strong style="color: var(--tx)">Without Boltline:</strong>
+                  Weeks of manual archaeology. Spreadsheets, emails, tribal
+                  knowledge. Maybe you find them all, maybe one detonates during
+                  a test.
+                </p>
+                <p>
+                  <strong style="color: var(--tx)">With Boltline:</strong>
+                  Queried the system. Every shelf location, every affected
+                  assembly. 4 washers inside an active engine. Reworked and hot
+                  fired <strong style="color: var(--gn)">the same day</strong>.
+                </p>
+                <div class="quote gq">
+                  2 hours vs. 2 weeks. Every hardware founder has lived a
+                  version of this. This story IS the pitch.
+                </div>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">The Bottleneck Discovery</h3>
+                <p>
+                  <strong style="color: var(--tx)">Problem:</strong> Welded
+                  barrel assembly too slow. Obvious fix: more welding stations.
+                  Cost: $200K+.
+                </p>
+                <p>
+                  <strong style="color: var(--tx)">Without Boltline:</strong>
+                  Capital expenditure based on gut feel.
+                </p>
+                <p>
+                  <strong style="color: var(--tx)">With Boltline:</strong>
+                  Mapped work plan in detail. Bottleneck was
+                  <strong style="color: var(--gn)">inspection sequencing</strong
+                  >, not welding. Moved checks earlier, cut redundant sign-offs.
+                  Cycle time dropped
+                  <strong style="color: var(--gn)"
+                    >without spending a dollar</strong
+                  >.
+                </p>
+                <div class="quote gq">
+                  The tool pays for itself by preventing the wrong capital
+                  expenditure. Hardware founders understand this math instantly.
+                </div>
+              </div>
+            </div>
+            <div class="co rd anim">
+              <strong>Honest gap:</strong> These are Boltline&rsquo;s own
+              stories &mdash; vendor proof, not customer proof. The first SpaceX
+              alumni customer who can tell THEIR version of this story unlocks
+              the entire segment. That&rsquo;s why landing pilot #1 is the real
+              objective.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S3: TARGET ACCOUNTS ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Named Target Accounts</div>
+            <h2 class="anim">12 real companies, scored with explicit rubric</h2>
+            <div class="kpi-table anim">
+              <div
+                class="kpi-row kpi-head"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div>Company</div>
+                <div>Founder</div>
+                <div>What They Build</div>
+                <div>Raised</div>
+                <div>Score</div>
+                <div style="border-right: none">Tier</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Ursa Major</div>
+                <div>J. Laurienti</div>
+                <div>Rocket engines &mdash; production ramp, multi-variant</div>
+                <div>$134M</div>
+                <div style="color: var(--gn)">92</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Impulse Space</div>
+                <div>T. Mueller</div>
+                <div>Orbital vehicles &mdash; SpaceX propulsion CTO 16 yrs</div>
+                <div>$150M+</div>
+                <div style="color: var(--gn)">90</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Varda Space</div>
+                <div>W. Bruey</div>
+                <div>Microgravity mfg &mdash; reentry capsules, scaling</div>
+                <div>$51M</div>
+                <div style="color: var(--gn)">88</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Radiant Nuclear</div>
+                <div>D. Bernauer</div>
+                <div>Portable microreactors &mdash; ITAR, defense</div>
+                <div>$90M+</div>
+                <div style="color: var(--gn)">87</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Freeform</div>
+                <div>T. Ronacher</div>
+                <div>Metal 3D printing &mdash; production mfg</div>
+                <div>$45M</div>
+                <div style="color: var(--gn)">85</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Reliable Robotics</div>
+                <div>R. Rose</div>
+                <div>Autonomous aircraft &mdash; FAA compliance</div>
+                <div>$134M</div>
+                <div style="color: var(--gn)">82</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Astro Forge</div>
+                <div>J. Acain</div>
+                <div>Asteroid mining spacecraft &mdash; complex assemblies</div>
+                <div>$55M</div>
+                <div style="color: var(--gn)">80</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 120px 100px 1fr 65px 45px 45px"
+              >
+                <div class="kpi-metric">Parallel Systems</div>
+                <div>M. Soule</div>
+                <div>Autonomous electric freight rail</div>
+                <div>$52M</div>
+                <div style="color: var(--gn)">78</div>
+                <div style="border-right: none">
+                  <span class="tag gr">A</span>
+                </div>
+              </div>
+            </div>
+            <div class="g g2 anim" style="margin-top: 12px">
+              <div class="c">
+                <h3 style="color: var(--am)">Scoring rubric (100 pts)</h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Leadership fit (25):</strong
+                    >
+                    25 = founder/CTO ex-SpaceX. 15 = VP-level. 5 =
+                    engineer-level, no decision authority
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Company fit (25):</strong>
+                    25 = complex HW, 50&ndash;200 headcount, production ramp. 15
+                    = prototype stage. 5 = pre-product
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Timing signal (20):</strong
+                    >
+                    20 = active trigger (funding, hiring, milestone). 10 =
+                    recent but not current. 0 = no signal
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Pain likelihood (20):</strong
+                    >
+                    20 = known compliance/traceability pressure. 10 = inferred.
+                    0 = no evidence
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Reachability (10):</strong>
+                    10 = warm intro via Stoke network. 5 = mutual connection. 0
+                    = fully cold
+                  </li>
+                </ul>
+              </div>
+              <div class="c">
+                <h3 style="color: var(--am)">
+                  Day 0 stack check (required before outreach)
+                </h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Check job descriptions</strong
+                    >
+                    for mentions of First Resonance, Duro, ION, Arena, Propel,
+                    or &ldquo;PLM&rdquo;
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Check LinkedIn:</strong>
+                    Does their VP Eng follow/endorse FR or Duro founders?
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Check company tech page</strong
+                    >
+                    if one exists (partners, integrations mentioned)
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >If competitor installed:</strong
+                    >
+                    Angle shifts to &ldquo;how&rsquo;s the gap between PLM and
+                    shop floor?&rdquo; Boltline&rsquo;s breadth is the play
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">If unknown:</strong>
+                    Default to &ldquo;vs. spreadsheets&rdquo; angle. Most are
+                    still there.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S4: FUNNEL MATH ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Honest Funnel Math</div>
+            <h2 class="anim">Conservative numbers, not aspirational ones</h2>
+            <div class="g g2 anim">
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">
+                  With warm intro (Stoke network connection)
+                </h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Emails/month:</strong>
+                    3&ndash;5 (limited by warm connections available)
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Positive reply rate:</strong
+                    >
+                    25&ndash;40% (warm intro = not cold)
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Reply &rarr; meeting:</strong
+                    >
+                    60%
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Meeting &rarr; diagnostic:</strong
+                    >
+                    50%
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Diagnostic &rarr; pilot:</strong
+                    >
+                    30%
+                  </li>
+                </ul>
+                <p style="margin-top: 10px">
+                  <strong style="color: var(--tx)"
+                    >90-day yield (15 warm touches):</strong
+                  >
+                  15 &times; .30 &times; .60 &times; .50 &times; .30 =
+                  <strong style="color: var(--gn)">~0.4 pilots</strong>
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3 style="color: var(--ac)">
+                  Without warm intro (trigger-based cold)
+                </h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Emails/month:</strong>
+                    8&ndash;10 Tier A + 15&ndash;20 Tier B
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Positive reply rate:</strong
+                    >
+                    8&ndash;12% Tier A, 4&ndash;6% Tier B (industry: 3&ndash;5%
+                    cold, we&rsquo;re above because trigger-based + shared
+                    context)
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Reply &rarr; meeting:</strong
+                    >
+                    40%
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Meeting &rarr; diagnostic:</strong
+                    >
+                    50%
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Diagnostic &rarr; pilot:</strong
+                    >
+                    25%
+                  </li>
+                </ul>
+                <p style="margin-top: 10px">
+                  <strong style="color: var(--tx)"
+                    >90-day yield (30 Tier A + 60 Tier B):</strong
+                  ><br />Tier A: 30 &times; .10 &times; .40 &times; .50 &times;
+                  .25 = <strong style="color: var(--ac)">~0.15 pilots</strong
+                  ><br />Tier B: 60 &times; .05 &times; .40 &times; .50 &times;
+                  .25 = <strong style="color: var(--ac)">~0.15 pilots</strong>
+                </p>
+              </div>
+            </div>
+            <div class="co am anim">
+              <strong>Combined 90-day forecast:</strong> ~0.7 pilots from math
+              alone. That rounds to 1 &mdash; maybe 2 if warm intros outperform.
+              Not 3&ndash;5. The honest target is
+              <strong>1&ndash;2 signed pilots</strong> in 90 days. That&rsquo;s
+              still a win &mdash; the first customer unlocks peer proof,
+              referrals, and case study rights. Overpromising kills credibility.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S5: OPERATIONAL STACK ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Day-1 Operational Stack</div>
+            <h2 class="anim">
+              What you need running before the first email goes out
+            </h2>
+            <div class="g g3 anim">
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3 style="color: var(--ac)">Email infrastructure</h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Domain:</strong> Set up
+                    outreach@boltline.com with SPF, DKIM, DMARC configured
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Warm-up:</strong> 2&ndash;3
+                    weeks of domain warming before volume sends (use Instantly
+                    or Lemlist warm-up)
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Alternative:</strong>
+                    Marketing&rsquo;s personal Gmail for Tier A (5/day max,
+                    bypasses warming). Use platform for Tier B
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Tracking:</strong> Pixel
+                    tracking OFF for Tier A &mdash; technical founders
+                    block/notice it. Track replies only.
+                  </li>
+                </ul>
+                <p style="font-size: 12px; color: var(--mut); margin-top: 6px">
+                  Week -2 to 0 task. Cannot skip this.
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3 style="color: var(--ac)">CRM + data</h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">CRM:</strong> HubSpot
+                    &mdash; company, contact, tier, score, trigger, status, last
+                    touch, next action, objection as custom properties.
+                    AI-assisted lead scoring and enrichment.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Account list:</strong>
+                    HubSpot import &mdash; sourced from LinkedIn SN, enriched
+                    from Crunchbase, AI-scored on ingest
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Objection log:</strong>
+                    HubSpot custom object. Verbatim quotes from every reply.
+                    AI-tagged by theme. Reviewed weekly.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Rule:</strong> No email
+                    goes out unless the account is in HubSpot with a score and a
+                    documented trigger.
+                  </li>
+                </ul>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3 style="color: var(--ac)">Monitoring alerts</h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">LinkedIn SN:</strong>
+                    $100/mo. Saved search for SpaceX alumni + title + company
+                    size filters. Weekly digest.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Crunchbase Pro:</strong>
+                    $49/mo. Follow all Tier A accounts. Funding = instant Tier A
+                    promotion.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Google Alerts:</strong>
+                    Free. &ldquo;[company name]&rdquo; + funding / facility /
+                    production / SBIR for each Tier A.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">SAM.gov:</strong> Free.
+                    Bookmark searches for target company names. Check weekly.
+                  </li>
+                </ul>
+                <p style="font-size: 12px; color: var(--mut); margin-top: 6px">
+                  Total tool cost: $149/mo. Setup time: 4 hours.
+                </p>
+              </div>
+            </div>
+            <div class="co anim">
+              <strong>Non-negotiable:</strong> Email infrastructure + CRM must
+              be running before Week 4 outreach. If domain warming starts Week
+              1, you&rsquo;re ready by Week 3. If it starts Week 3, outreach
+              slips to Week 6.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S6: OUTREACH COPY ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">What You Actually Say</div>
+            <h2 class="anim">
+              Trigger &rarr; tailored email &rarr; real proof woven in
+            </h2>
+            <div class="g g2 anim">
+              <div class="c" style="border-left: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">Trigger: Funding Round</h3>
+                <p style="font-size: 12px; color: var(--mut)">
+                  Example: Radiant Nuclear closes Series B
+                </p>
+                <div class="quote gq">
+                  &ldquo;Doug &mdash; congrats on the round. Building a
+                  microreactor means you&rsquo;re probably 6 months from the
+                  moment when BOM tracking breaks under variant proliferation
+                  and compliance load. We built Boltline inside Stoke Space for
+                  exactly that inflection. Quick example: when we found 10,000
+                  out-of-spec washers, we traced every affected assembly &mdash;
+                  including 4 inside an engine &mdash; and completed rework +
+                  hot fire the same day. Worth 20 min to see if it fits your
+                  world?&rdquo;
+                </div>
+                <p style="font-size: 11px; color: var(--mut); margin-top: 6px">
+                  Subject: &ldquo;Re: Radiant&rsquo;s Series B&rdquo; &mdash; no
+                  Boltline in subject line
+                </p>
+              </div>
+              <div class="c" style="border-left: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">Trigger: Manufacturing Hiring</h3>
+                <p style="font-size: 12px; color: var(--mut)">
+                  Example: Ursa Major posts 3 mfg engineer roles
+                </p>
+                <div class="quote gq">
+                  &ldquo;Joe &mdash; noticed you&rsquo;re scaling the mfg team.
+                  The hardest part isn&rsquo;t recruiting &mdash; it&rsquo;s
+                  getting new hires to build the same way your first team does.
+                  At Stoke, we replaced PDF work instructions with versioned,
+                  app-like work plans technicians access via QR codes at the
+                  station. New hires build to spec from day one. 15 min to show
+                  you?&rdquo;
+                </div>
+                <p style="font-size: 11px; color: var(--mut); margin-top: 6px">
+                  Subject: &ldquo;Onboarding mfg engineers at scale&rdquo;
+                </p>
+              </div>
+            </div>
+            <div class="g g2 anim">
+              <div class="c" style="border-left: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">Trigger: Production Milestone</h3>
+                <p style="font-size: 12px; color: var(--mut)">
+                  Example: Varda lands reentry capsule
+                </p>
+                <div class="quote gq">
+                  &ldquo;Will &mdash; the W-2 reentry was incredible. Now the
+                  real question: can you build 10 more without as-built records
+                  becoming a mess? Every team we&rsquo;ve seen hits a wall
+                  around unit 5&ndash;10 where the gap between as-designed and
+                  as-built goes invisible &mdash; until an audit surfaces it the
+                  hard way.&rdquo;
+                </div>
+              </div>
+              <div class="c" style="border-left: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">Trigger: Gov Contract / SBIR</h3>
+                <p style="font-size: 12px; color: var(--mut)">
+                  Example: Turion Space wins SBIR Phase II
+                </p>
+                <div class="quote gq">
+                  &ldquo;Tyler &mdash; congrats on the Phase II. One thing that
+                  catches teams off guard: traceability requirements with
+                  government money are a step function harder than what most
+                  early teams have. We built Boltline at Stoke partly because we
+                  needed ITAR-compliant as-built records that didn&rsquo;t
+                  depend on someone updating a spreadsheet.&rdquo;
+                </div>
+              </div>
+            </div>
+            <div class="co anim">
+              <strong>A/B test from Day 1:</strong> For each trigger type, write
+              variant A (washer story lead) and variant B (bottleneck story
+              lead). Run 5 of each. Whichever gets more replies in Wave 1
+              becomes the default for Wave 2. No guessing &mdash; let the data
+              decide which proof story resonates more.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S7: REPLY HANDLING ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Reply Handling Playbook</div>
+            <h2 class="anim">Every reply type has a scripted next step</h2>
+            <p class="anim">
+              Without this, Marketing improvises and you can&rsquo;t train a
+              second person. This playbook is what makes the motion scalable.
+            </p>
+            <div class="kpi-table anim">
+              <div
+                class="kpi-row kpi-head"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div>Reply Type</div>
+                <div>Response Script</div>
+                <div style="border-right: none">CRM Status</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">&ldquo;Tell me more&rdquo;</div>
+                <div>
+                  Don&rsquo;t send a deck. &ldquo;Easier to show than tell
+                  &mdash; here&rsquo;s a 20-min slot: [calendar]. I&rsquo;ll
+                  walk through how we handle [their specific trigger].&rdquo;
+                </div>
+                <div style="border-right: none; color: var(--gn)">
+                  Meeting requested
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">&ldquo;Not now&rdquo;</div>
+                <div>
+                  &ldquo;Totally get it. Mind if I check back in 90 days? In the
+                  meantime, here&rsquo;s a traceability checklist that might be
+                  useful down the road. [LP2 link]&rdquo;
+                </div>
+                <div style="border-right: none; color: var(--am)">
+                  Nurture &mdash; 90 day
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">&ldquo;We use FR/Duro&rdquo;</div>
+                <div>
+                  &ldquo;Smart choice. Curious &mdash; how&rsquo;s the handoff
+                  between [PLM/MES] and actual shop floor execution? That gap is
+                  where we tend to add value. Worth a quick compare?&rdquo;
+                </div>
+                <div style="border-right: none; color: var(--ac)">
+                  Competitor installed
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">&ldquo;Send me something&rdquo;</div>
+                <div>
+                  Send LP1 link (not a PDF attachment). &ldquo;Here&rsquo;s the
+                  origin story and two specific examples. Happy to walk through
+                  it live if anything resonates. [calendar]&rdquo;
+                </div>
+                <div style="border-right: none; color: var(--ac)">Sent LP1</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">&ldquo;Too early for us&rdquo;</div>
+                <div>
+                  &ldquo;Makes sense. The teams that get the most value are
+                  usually at 15&ndash;50 people, moving from prototype to
+                  production. When you get there, we&rsquo;ll be here.&rdquo;
+                </div>
+                <div style="border-right: none; color: var(--am)">
+                  Nurture &mdash; stage
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">&ldquo;What does it cost?&rdquo;</div>
+                <div>
+                  Never answer pricing over email. &ldquo;Depends on team size
+                  and scope &mdash; easier to ballpark after a 15-min call where
+                  I understand your setup. [calendar]&rdquo;
+                </div>
+                <div style="border-right: none; color: var(--gn)">
+                  Meeting requested
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="grid-template-columns: 160px 1fr 140px"
+              >
+                <div class="kpi-metric">No reply (Day 21)</div>
+                <div>
+                  Graceful close. &ldquo;Closing the loop. You&rsquo;ll hear
+                  about us from the network eventually. Rooting for
+                  [Company].&rdquo; Move to passive nurture.
+                </div>
+                <div style="border-right: none; color: var(--mut)">
+                  Closed &mdash; no response
+                </div>
+              </div>
+            </div>
+            <div class="co anim">
+              <strong>Rule:</strong> Log every reply verbatim in the objection
+              sheet. The pattern of replies tells you more about your messaging
+              than any metric. Review weekly.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S8: 21-DAY SEQUENCE ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Full Outreach Cadence</div>
+            <h2 class="anim">21 days, 5 touches, then stop</h2>
+            <div class="tl anim">
+              <div class="ph">
+                <div class="ph-l">
+                  <div class="ph-d">0</div>
+                  <div class="ph-s">Pre</div>
+                </div>
+                <div class="ph-c">
+                  <div class="ph-t">Stack check + trigger + warm path</div>
+                  <div class="ph-desc">
+                    Competitor installed? Adjust angle. No trigger? Hold in Tier
+                    B. Warm connection available? Route through intro,
+                    don&rsquo;t cold email.
+                  </div>
+                  <div class="tags"><span class="tag am">Required</span></div>
+                </div>
+              </div>
+              <div class="ph">
+                <div class="ph-l">
+                  <div class="ph-d">1</div>
+                  <div class="ph-s">Day</div>
+                </div>
+                <div class="ph-c">
+                  <div class="ph-t">Trigger-based email</div>
+                  <div class="ph-desc">
+                    From Marketing&rsquo;s personal email (Tier A) or
+                    boltline.com (Tier B). Subject references trigger, not
+                    Boltline. A/B test proof story variant.
+                  </div>
+                  <div class="tags"><span class="tag gr">Email</span></div>
+                </div>
+              </div>
+              <div class="ph">
+                <div class="ph-l">
+                  <div class="ph-d">3</div>
+                  <div class="ph-s">Day</div>
+                </div>
+                <div class="ph-c">
+                  <div class="ph-t">LinkedIn connection + context</div>
+                  <div class="ph-desc">
+                    &ldquo;Marketing from Boltline (born out of Stoke Space).
+                    Sent you a note about [trigger]. Would love to
+                    connect.&rdquo; No pitch, no link.
+                  </div>
+                  <div class="tags"><span class="tag pr">LinkedIn</span></div>
+                </div>
+              </div>
+              <div class="ph">
+                <div class="ph-l">
+                  <div class="ph-d">7</div>
+                  <div class="ph-s">Day</div>
+                </div>
+                <div class="ph-c">
+                  <div class="ph-t">Value share &mdash; no ask</div>
+                  <div class="ph-desc">
+                    Link to traceability scorecard (LP2). &ldquo;No pitch, just
+                    a tool we wish we&rsquo;d had at Stoke.&rdquo;
+                  </div>
+                  <div class="tags">
+                    <span class="tag gr">Email</span
+                    ><span class="tag bl">Lead magnet</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ph">
+                <div class="ph-l">
+                  <div class="ph-d">14</div>
+                  <div class="ph-s">Day</div>
+                </div>
+                <div class="ph-c">
+                  <div class="ph-t">Specific pain email</div>
+                  <div class="ph-desc">
+                    &ldquo;Most teams run spreadsheets + Jira + homegrown
+                    tracker. Works until unit 5&ndash;10, then a bad part gets
+                    installed and you spend 2 weeks tracing it.&rdquo;
+                  </div>
+                  <div class="tags"><span class="tag gr">Email</span></div>
+                </div>
+              </div>
+              <div class="ph">
+                <div class="ph-l">
+                  <div class="ph-d">21</div>
+                  <div class="ph-s">Day</div>
+                </div>
+                <div class="ph-c">
+                  <div class="ph-t">Graceful close</div>
+                  <div class="ph-desc">
+                    &ldquo;Closing the loop. You&rsquo;ll hear about us from the
+                    network. Rooting for [Company].&rdquo; Move to 90-day
+                    passive nurture. No more direct outreach.
+                  </div>
+                  <div class="tags"><span class="tag rd">Final</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="co anim">
+              <strong>Hard stop at 5 touches.</strong> This audience is small,
+              high-value, and talks to each other. Being respectful IS the
+              strategy. If they don&rsquo;t reply in 5 touches, the timing is
+              wrong &mdash; not the message. Try again in 90 days with a new
+              trigger.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S9: LANDING PAGES — ACTUAL BRIEF ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">Landing Page Briefs</div>
+            <h2 class="anim">
+              Ship specs, not concepts &mdash; these are the build orders
+            </h2>
+            <div class="g g2 anim">
+              <div class="c" style="border-top: 3px solid var(--pu)">
+                <h3 style="color: var(--pu)">
+                  LP1: boltline.com/hardware-teams
+                </h3>
+                <p style="font-size: 12px; color: var(--mut)">
+                  Ship: Week 3 | Word count: ~800 | Design: single-scroll, no
+                  nav
+                </p>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Hero (above fold):</strong>
+                    &ldquo;Built under rocket-iteration pressure. Ready for
+                    yours.&rdquo; + 1 product screenshot + &ldquo;See a
+                    demo&rdquo; button
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Section 1 (Origin):</strong
+                    >
+                    150 words. Team joined Stoke as early employees. Built tool
+                    because nothing worked. Not a product idea &mdash; a
+                    survival tool. Include Stoke logo.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Section 2 (Proof):</strong>
+                    Washer story (100 words) + Bottleneck story (100 words).
+                    Specific numbers. No &ldquo;learn more&rdquo; &mdash; the
+                    proof is on the page.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Section 3 (Before/After):</strong
+                    >
+                    2-column visual. Left: &ldquo;Spreadsheets + Jira + Drive +
+                    tribal knowledge.&rdquo; Right: &ldquo;One system: parts,
+                    BOMs, work plans, traceability.&rdquo;
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Section 4 (Logos):</strong>
+                    Intuitive Machines, iSpace. If any SpaceX alumni sign, they
+                    go here immediately.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">CTA:</strong> &ldquo;See
+                    how it works for your build process&rdquo; &rarr; Calendly
+                    20-min. No form &mdash; direct booking reduces friction.
+                  </li>
+                </ul>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--pu)">
+                <h3 style="color: var(--pu)">
+                  LP2: boltline.com/traceability-scorecard
+                </h3>
+                <p style="font-size: 12px; color: var(--mut)">
+                  Ship: Week 4 | Word count: ~400 + interactive quiz | Design:
+                  single-scroll
+                </p>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Hero:</strong> &ldquo;Is
+                    your build process ready for your next 10x?&rdquo;
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Quiz (12 questions):</strong
+                    >
+                    Yes/No/Partially format. Topics: part traceability, recall
+                    response time, work instruction versioning, onboarding
+                    consistency, audit readiness, config management
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Output:</strong> Score
+                    0&ndash;100 + letter grade + 1-paragraph assessment with
+                    their weakest area highlighted
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Capture:</strong> Email
+                    required to see results. No phone number. First name + email
+                    only.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Follow-up:</strong>
+                    Auto-email keyed to weakest area. If traceability = low:
+                    washer story. If onboarding = low: QR code work plans story.
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Build option:</strong>
+                    Typeform embedded (fast, Week 4 feasible) or custom React
+                    component (better but Week 6+)
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="co pu anim">
+              <strong>LP1 is the priority.</strong> Without it, outreach emails
+              link to generic boltline.com &mdash; which works but isn&rsquo;t
+              optimized for this audience. LP2 is a nice-to-have for Day 7 of
+              the sequence. If LP2 slips, replace Day 7 email with a PDF version
+              of the scorecard.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S10: 90-DAY PLAN ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">90-Day Execution Plan</div>
+            <h2 class="anim">
+              Specific deliverables per week, binary gates, named owners
+            </h2>
+            <div class="kpi-table anim">
+              <div
+                class="kpi-row kpi-head"
+                style="grid-template-columns: 55px 1fr 120px 130px"
+              >
+                <div>Week</div>
+                <div>Deliverable</div>
+                <div>Owner</div>
+                <div style="border-right: none">Gate</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(52, 211, 153, 0.02);
+                "
+              >
+                <div class="kpi-metric">-2</div>
+                <div>
+                  Set up email domain + begin warm-up. Configure SPF/DKIM/DMARC
+                  on outreach alias.
+                </div>
+                <div>Eng / IT</div>
+                <div style="border-right: none">DNS records live</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(52, 211, 153, 0.02);
+                "
+              >
+                <div class="kpi-metric">1</div>
+                <div>
+                  LinkedIn SN search + Crunchbase cross-ref. Import to HubSpot
+                  with AI scoring. 200+ accounts.
+                </div>
+                <div>Growth</div>
+                <div style="border-right: none">
+                  HubSpot loaded, 200+ contacts
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(52, 211, 153, 0.02);
+                "
+              >
+                <div class="kpi-metric">2</div>
+                <div>
+                  Score all accounts with rubric. Tier A/B/C. Stack check top
+                  20. Map Stoke warm connections.
+                </div>
+                <div>Growth + Marketing</div>
+                <div style="border-right: none">8+ Tier A scored</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(52, 211, 153, 0.02);
+                "
+              >
+                <div class="kpi-metric">3</div>
+                <div>
+                  Ship LP1. Set up all monitoring alerts. Write 4 trigger email
+                  variants (A/B for 2 proof stories).
+                </div>
+                <div>Growth + Eng</div>
+                <div style="border-right: none">LP1 live, emails drafted</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(52, 211, 153, 0.02);
+                "
+              >
+                <div class="kpi-metric">4</div>
+                <div>
+                  Launch Wave 1: 8&ndash;10 Tier A outreach. First 2 LinkedIn
+                  posts from Marketing. Ship LP2 (or PDF fallback).
+                </div>
+                <div>Marketing + Growth</div>
+                <div style="border-right: none">First emails sent</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(56, 189, 248, 0.02);
+                "
+              >
+                <div class="kpi-metric">5&ndash;6</div>
+                <div>
+                  Run sequences. Handle replies per playbook. Book and run
+                  diagnostic calls. Log objections verbatim.
+                </div>
+                <div>Marketing (calls)</div>
+                <div style="border-right: none; color: var(--gn)">
+                  2+ meetings booked
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(56, 189, 248, 0.02);
+                "
+              >
+                <div class="kpi-metric">7</div>
+                <div>
+                  Wave 2: next Tier A batch + 15&ndash;20 Tier B
+                  (semi-personalized). Use winning A/B variant from Wave 1.
+                </div>
+                <div>Growth</div>
+                <div style="border-right: none">Wave 2 live</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(56, 189, 248, 0.02);
+                "
+              >
+                <div class="kpi-metric">8</div>
+                <div>
+                  Side dinner at or near Space Symposium / standalone in LA or
+                  Seattle. 8&ndash;12 invites. No pitch.
+                </div>
+                <div>Marketing</div>
+                <div style="border-right: none">Dinner executed</div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(139, 92, 246, 0.02);
+                "
+              >
+                <div class="kpi-metric">9&ndash;10</div>
+                <div>
+                  Scope first pilot(s). Success criteria: traceability
+                  completeness, onboarding time, rework reduction.
+                </div>
+                <div>Marketing + SE</div>
+                <div style="border-right: none; color: var(--gn)">
+                  Pilot SOW signed
+                </div>
+              </div>
+              <div
+                class="kpi-row"
+                style="
+                  grid-template-columns: 55px 1fr 120px 130px;
+                  background: rgba(139, 92, 246, 0.02);
+                "
+              >
+                <div class="kpi-metric">11&ndash;12</div>
+                <div>
+                  Segment scorecard: reply rates, objection themes, A/B results,
+                  competitive intel. Go/no-go decision.
+                </div>
+                <div>Growth + leadership</div>
+                <div style="border-right: none; color: var(--gn)">
+                  Decision documented
+                </div>
+              </div>
+            </div>
+            <div class="co gn anim">
+              <strong>Note Week -2:</strong> Email infrastructure is a
+              pre-requisite, not a Week 1 task. If this starts late, everything
+              shifts right. Plan accordingly.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S11: FAILURE MODES ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">What Kills This Motion</div>
+            <h2 class="anim">
+              Five failure modes, each with a specific prevention
+            </h2>
+            <div class="g g2 anim">
+              <div class="c" style="border-left: 3px solid var(--rd)">
+                <h3 style="color: var(--rd)">1. No warm intros available</h3>
+                <p>
+                  If the Stoke team has zero 1st-degree connections to these
+                  founders, the warm path dries up and you&rsquo;re fully cold.
+                  Cold-only reply rates drop to 5&ndash;8%.
+                  <strong style="color: var(--tx)">Fix:</strong> Map connections
+                  in Week 2. If fewer than 5 warm paths exist, prioritize
+                  conference dinners (Space Symposium) to build them.
+                </p>
+              </div>
+              <div class="c" style="border-left: 3px solid var(--rd)">
+                <h3 style="color: var(--rd)">
+                  2. &ldquo;SpaceX alumni&rdquo; becomes the pitch
+                </h3>
+                <p>
+                  If outreach says &ldquo;Hey fellow SpaceX person!&rdquo;
+                  instead of addressing operational pain, it&rsquo;s dead.
+                  <strong style="color: var(--tx)">Fix:</strong> SpaceX
+                  background is the <em>targeting</em> criterion, never the
+                  <em>message</em>. The message is always about their current
+                  scaling pain.
+                </p>
+              </div>
+              <div class="c" style="border-left: 3px solid var(--rd)">
+                <h3 style="color: var(--rd)">3. Volume temptation</h3>
+                <p>
+                  &ldquo;Why 10/month? Let&rsquo;s blast 200.&rdquo; Then reply
+                  rates crash and the network is permanently burned.
+                  <strong style="color: var(--tx)">Fix:</strong> Hard cap. 10
+                  Tier A, 20 Tier B. These people talk. One bad mass email
+                  poisons the entire segment.
+                </p>
+              </div>
+              <div class="c" style="border-left: 3px solid var(--rd)">
+                <h3 style="color: var(--rd)">
+                  4. Meetings die after &ldquo;cool demo&rdquo;
+                </h3>
+                <p>
+                  No structured next step after diagnostic.
+                  <strong style="color: var(--tx)">Fix:</strong> Every
+                  diagnostic ends with scoped pilot proposal: one product line,
+                  30&ndash;60 days, 3 measurable outcomes. If they can&rsquo;t
+                  commit, they&rsquo;re not ready &mdash; move to nurture.
+                </p>
+              </div>
+            </div>
+            <div class="co rd anim" style="margin-top: 14px">
+              <strong>5. Marketing is the bottleneck.</strong> All Tier A runs
+              through them. If also running product, capacity is 3&ndash;5
+              hrs/week max. Fix: Growth hire owns all monitoring, enrichment,
+              scoring, and Tier B. Marketing only writes Tier A emails
+              (2&ndash;3/week) and runs diagnostic calls. By Month 3, SE can run
+              overflow calls with Marketing&rsquo;s talk track.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S12: METRICS ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">6 Numbers + Weekly Review</div>
+            <h2 class="anim">Track these. Ignore everything else.</h2>
+            <div class="g g3 anim">
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3>
+                  <span
+                    style="
+                      font-family: &quot;Sora&quot;, sans-serif;
+                      font-size: 24px;
+                      font-weight: 800;
+                      color: var(--gn);
+                    "
+                    >1</span
+                  >
+                </h3>
+                <h3>Trigger signals / week</h3>
+                <p>
+                  Target: 3&ndash;8. Zero for 2 weeks = monitoring is broken or
+                  target list is too narrow.
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3>
+                  <span
+                    style="
+                      font-family: &quot;Sora&quot;, sans-serif;
+                      font-size: 24px;
+                      font-weight: 800;
+                      color: var(--gn);
+                    "
+                    >2</span
+                  >
+                </h3>
+                <h3>Positive reply rate</h3>
+                <p>
+                  Warm: 25&ndash;40%. Cold Tier A: 8&ndash;12%. Cold Tier B:
+                  4&ndash;6%. Below these = messaging problem. Iterate copy.
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--gn)">
+                <h3>
+                  <span
+                    style="
+                      font-family: &quot;Sora&quot;, sans-serif;
+                      font-size: 24px;
+                      font-weight: 800;
+                      color: var(--gn);
+                    "
+                    >3</span
+                  >
+                </h3>
+                <h3>Meetings booked / month</h3>
+                <p>
+                  Target: 2&ndash;4 qualified. &ldquo;Qualified&rdquo; =
+                  decision-maker at Tier A/B, not a manager doing research.
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3>
+                  <span
+                    style="
+                      font-family: &quot;Sora&quot;, sans-serif;
+                      font-size: 24px;
+                      font-weight: 800;
+                      color: var(--ac);
+                    "
+                    >4</span
+                  >
+                </h3>
+                <h3>Meeting &rarr; diagnostic</h3>
+                <p>
+                  Target: 50%. Below 30% = demo isn&rsquo;t connecting to their
+                  pain. Revisit first 10 min of the call.
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3>
+                  <span
+                    style="
+                      font-family: &quot;Sora&quot;, sans-serif;
+                      font-size: 24px;
+                      font-weight: 800;
+                      color: var(--ac);
+                    "
+                    >5</span
+                  >
+                </h3>
+                <h3>Pipeline ($)</h3>
+                <p>
+                  Cumulative dollar value of qualified opportunities from this
+                  segment. The number that justifies Month 4 investment.
+                </p>
+              </div>
+              <div class="c" style="border-top: 3px solid var(--ac)">
+                <h3>
+                  <span
+                    style="
+                      font-family: &quot;Sora&quot;, sans-serif;
+                      font-size: 24px;
+                      font-weight: 800;
+                      color: var(--ac);
+                    "
+                    >6</span
+                  >
+                </h3>
+                <h3>Top objection theme</h3>
+                <p>
+                  Not a number &mdash; a pattern. &ldquo;Already use FR&rdquo;
+                  vs &ldquo;Not ready&rdquo; vs &ldquo;Too expensive&rdquo;
+                  tells you completely different things. Review weekly.
+                </p>
+              </div>
+            </div>
+            <div class="co rd anim">
+              <strong>Never measure:</strong> Emails sent. Open rates. LinkedIn
+              impressions. &ldquo;Touches per account.&rdquo; Activity metrics
+              make you feel productive while pipeline stays empty.
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ S13: OUTCOME + ASK ═══ -->
+        <article class="s">
+          <div class="inner">
+            <div class="ki anim">The Ask</div>
+            <h2 class="anim">
+              What success looks like &mdash; and what it costs
+            </h2>
+            <div class="stats anim">
+              <div class="st">
+                <div class="sv" style="color: var(--gn)">1&ndash;2</div>
+                <div class="sl">
+                  Signed pilots from SpaceX<br />alumni accounts by Day 90
+                </div>
+              </div>
+              <div class="st">
+                <div class="sv" style="color: var(--gn)">8%+</div>
+                <div class="sl">
+                  Cold reply rate<br />(industry avg: 3&ndash;5%)
+                </div>
+              </div>
+              <div class="st">
+                <div class="sv" style="color: var(--gn)">1</div>
+                <div class="sl">
+                  Reference customer who can<br />tell their version of the
+                  story
+                </div>
+              </div>
+              <div class="st">
+                <div class="sv" style="color: var(--gn)">Go/No</div>
+                <div class="sl">
+                  Clear signal by Week 12<br />to scale or redirect
+                </div>
+              </div>
+            </div>
+            <div class="g g2 anim" style="margin-top: 18px">
+              <div class="c" style="border-left: 3px solid var(--gn)">
+                <h3 style="color: var(--gn)">Investment required</h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Tools:</strong> LinkedIn SN
+                    ($100/mo) + Crunchbase Pro ($49/mo) + email warm-up tool
+                    ($30/mo) = $179/mo
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)"
+                      >Marketing&rsquo;s time:</strong
+                    >
+                    3&ndash;5 hrs/week &mdash; Tier A emails, diagnostic calls,
+                    LinkedIn posts
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Growth hire:</strong>
+                    15&ndash;20 hrs/week &mdash; monitoring, enrichment,
+                    scoring, Tier B, CRM, reply tracking
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Engineering:</strong> ~20
+                    hrs total for LP1 + LP2 (Weeks 3&ndash;4)
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Event:</strong> $2&ndash;3K
+                    for first side dinner (Month 2)
+                  </li>
+                </ul>
+              </div>
+              <div class="c" style="border-left: 3px solid var(--pu)">
+                <h3 style="color: var(--pu)">What the first pilot unlocks</h3>
+                <ul>
+                  <li>
+                    <strong style="color: var(--tx)">Peer proof:</strong>
+                    &ldquo;Ursa Major uses Boltline&rdquo; is 10x more powerful
+                    than &ldquo;Stoke Space built Boltline&rdquo;
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Case study:</strong> First
+                    customer story with metrics becomes the #1 sales asset for
+                    the entire segment
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Referral flywheel:</strong>
+                    SpaceX alumni recommend tools to each other. One customer
+                    can generate 3&ndash;5 warm intros
+                  </li>
+                  <li>
+                    <strong style="color: var(--tx)">Template:</strong> If this
+                    motion works for SpaceX diaspora, replicate it for ex-Blue
+                    Origin, ex-Tesla, ex-Apple hardware
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="co gn anim">
+              <strong>Bottom line:</strong> $179/mo + ~25 hrs/week of focused
+              effort. If the first pilot signs, the motion has earned the right
+              to scale. If it doesn&rsquo;t, the objection log tells you exactly
+              why, and you redirect &mdash; not guess.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <nav class="nb">
+        <div class="nl">
+          <span class="nc" id="ctr">1 / 13</span>
+          <span class="nt" id="ttl"></span>
+        </div>
+        <div class="nd" id="dots"></div>
+        <div class="btns">
+          <button class="btn" id="pv">&larr; Prev</button>
+          <button class="btn" id="nx">Next &rarr;</button>
+        </div>
+      </nav>
+    </main>
+    <script>
+      const S = Array.from(document.querySelectorAll(".s")),
+        C = document.getElementById("ctr"),
+        T = document.getElementById("ttl"),
+        D = document.getElementById("dots"),
+        P = document.getElementById("pv"),
+        N = document.getElementById("nx");
+      let cur = 0;
+      const titles = [
+        "",
+        "Proof Stories",
+        "Target Accounts + Scoring",
+        "Honest Funnel Math",
+        "Day-1 Ops Stack",
+        "Outreach Copy",
+        "Reply Handling",
+        "21-Day Sequence",
+        "Landing Page Briefs",
+        "90-Day Plan",
+        "Failure Modes",
+        "Metrics",
+        "Outcome + Ask",
+      ];
+      S.forEach((s, i) => {
+        const d = document.createElement("div");
+        d.className = "dt" + (i === 0 ? " on" : "");
+        d.onclick = () => go(i);
+        D.appendChild(d);
+      });
+      function go(i) {
+        if (i === cur || i < 0 || i >= S.length) return;
+        const p = S[cur],
+          n = S[i],
+          fwd = i > cur;
+        p.classList.remove("on");
+        p.classList.add("out");
+        n.style.transform = fwd ? "translateX(24px)" : "translateX(-24px)";
+        n.style.opacity = "0";
+        n.classList.add("on");
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            n.style.transform = "none";
+            n.style.opacity = "1";
+          }),
+        );
+        setTimeout(() => {
+          p.classList.remove("out");
+          p.style.transform = "";
+          p.style.opacity = "";
+        }, 400);
+        cur = i;
+        ui();
+      }
+      function ui() {
+        C.textContent = `${cur + 1} / ${S.length}`;
+        T.textContent = titles[cur] || "";
+        document
+          .querySelectorAll(".dt")
+          .forEach((d, i) => d.classList.toggle("on", i === cur));
+      }
+      ui();
+      P.onclick = () => go(cur - 1);
+      N.onclick = () => go(cur + 1);
+      document.onkeydown = (e) => {
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+          e.preventDefault();
+          go(cur + 1);
+        }
+        if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault();
+          go(cur - 1);
+        }
+        if (e.key === "Home") {
+          e.preventDefault();
+          go(0);
+        }
+        if (e.key === "End") {
+          e.preventDefault();
+          go(S.length - 1);
+        }
+      };
+      let tx = 0;
+      document.ontouchstart = (e) => {
+        tx = e.touches[0].clientX;
+      };
+      document.ontouchend = (e) => {
+        const d = e.changedTouches[0].clientX - tx;
+        if (Math.abs(d) > 50) go(cur + (d < 0 ? 1 : -1));
+      };
+    </script>
+  </body>
+</html>
